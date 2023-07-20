@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ᱪᱤᱠᱤ ᱚᱠᱛᱚ</title>
+    <style>
+        @font-face {
+            font-family: 'nagam';
+            src: url(https://cdn.jsdelivr.net/gh/xdev404/SOBF@main/fonts/nagam-Regular.woff);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: black;
+        }
+        .container {
+            width: 100vw;
+            height: 100vh;
+            font-family: 'nagam', Arial, Helvetica, sans-serif;
+            font-size: 128px;
+            color: #fff;
+        }
+        #dd {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+        #ddd {
+            display: flex;
+        }
+        #maha {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 100px 0;
+        }
+        #hours::after, #minutes::after, #seconds::after {
+            content: '';
+            font-size: 16px;
+            letter-spacing: 2px;
+            position: relative;
+            top: 0px;
+            left: 0;
+        }
+        #hours::after {
+            content: 'ᱴᱟᱲᱟᱝ'; 
+        }
+        #minutes::after {
+            content: 'ᱴᱤᱯᱤᱡ'; 
+        }
+        #seconds::after {
+            content: 'ᱴᱤᱡ'; 
+        }
+        .display-date {
+            text-align: center;
+            font-size: 4rem;
+            margin: 50px 0;
+        }
+        #day {
+            margin: 50px 0;
+            font-size: 48px;
+        }
+        @media screen and (min-width: 0px) and (max-width: 240px) {
+        }
+        @media screen and (min-width: 241px) and (max-width: 640px) {
+            .container {
+                max-width: 640px;
+                font-size: 36px;
+            }
+            #hours::after, #minutes::after, #seconds::after {
+                display: block;
+                position: relative;
+                font-size: 8px;
+                top: 8px;
+                left: 8px;
+            }
+            .display-date {
+                font-size: 18px;
+            }
+            #day {
+                font-size: 18px;
+            }
+        }
+        @media screen and (min-width: 641px) and (max-width: 1007px) {
+            #ddd {
+                margin-top: 50px;
+                font-size: 48px;
+            }
+            .display-date {
+                font-size: 28px;
+            }
+            #day {
+                font-size: 38px;
+            }
+        }
+        @media screen and (min-width: 1008px) and (max-width: 1366px) {}
+        @media screen and (min-width: 1367px) and (max-width: 1920px) {}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="dd">
+            <!-- CREDIT:- Forget to copy link :( -->
+            <div id="ddd">
+                <div id="hours">00</div>
+                <div class="d">:</div>
+                <div id="minutes">00</div>
+                <div class="d">:</div>
+                <div id="seconds">00</div>
+                <br>
+            </div>
+
+            <!-- CREDIT:- https://codepen.io/WhisnuYs/pen/oNLBEvv -->
+            <div class="display-date">
+                <span id="day">day</span> <br><br>
+                <span id="daynum">00</span>
+                <span id="month">month</span>
+                <span id="year">0000</span>
+            </div>
+        </div>
+       
+    </div>
+    <script>
+        function displayTime() {
+            var dateTime = new Date();
+            var hrs = dateTime.getHours();
+            var min = dateTime.getMinutes();
+            var sec = dateTime.getSeconds();
+            var session = document.getElementById('session');
+
+            if (hrs > 12) {
+                hrs = hrs - 12;
+            }
+
+            document.getElementById('hours').innerHTML = hrs;
+            document.getElementById('minutes').innerHTML = min;
+            document.getElementById('seconds').innerHTML = sec;
+        }
+        setInterval(displayTime, 10);
+
+        // Date
+        function updateDate() {
+            let today = new Date();
+
+            // return number
+            let dayName = today.getDay(),
+                dayNum = today.getDate(),
+                month = today.getMonth(),
+                year = today.getFullYear();
+
+            const months = [
+                "ᱡᱮᱱᱩᱶᱚᱨᱤ ",
+                "ᱯᱷᱮᱵᱨᱩᱨᱤ",
+                "ᱢᱟᱨᱪ",
+                "ᱮᱯᱨᱮᱞ",
+                "ᱢᱮᱭ",
+                "ᱡᱩᱱ",
+                "ᱡᱩᱞᱟᱭ",
+                "ᱚᱜᱚᱥᱴ",
+                "ᱥᱮᱯᱴᱮᱢᱵᱟᱹᱨ",
+                "ᱚᱠᱴᱚᱵᱟᱹᱨ",
+                "ᱱᱚᱣᱮᱢᱵᱟᱹᱨ",
+                "ᱰᱤᱥᱮᱢᱵᱟᱹᱨ",
+            ];
+            const dayWeek = [
+                "ᱥᱤᱸᱜᱮ ᱢᱟᱦᱟ",
+                "ᱚᱛᱮ ᱢᱟᱦᱟ",
+                "ᱵᱟᱞᱮ ᱢᱟᱦᱟ",
+                "ᱥᱟᱹᱜᱩᱱ ᱢᱟᱦᱟ",
+                "ᱥᱟᱹᱨᱫᱤ ᱢᱟᱦᱟ",
+                "ᱡᱟᱹᱨᱩᱢ ᱢᱟᱦᱟ",
+                "ᱧᱩᱦᱩᱢ ᱢᱟᱦᱟ"
+            ];
+            // value -> ID of the html element
+            const IDCollection = ["day", "daynum", "month", "year"];
+            // return value array with number as a index
+            const val = [dayWeek[dayName], dayNum, months[month], year];
+            for (let i = 0; i < IDCollection.length; i++) {
+                document.getElementById(IDCollection[i]).firstChild.nodeValue = val[i];
+            }
+        }
+        updateDate();
+    </script>
+</body>
+
+</html>
