@@ -2,17 +2,6 @@
 <html lang="en">
 
 <head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-W4QJMG4VGS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-W4QJMG4VGS');
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ᱪᱤᱠᱤ ᱚᱠᱛᱚ</title>
@@ -116,10 +105,20 @@
         }
         @media screen and (min-width: 1008px) and (max-width: 1366px) {}
         @media screen and (min-width: 1367px) and (max-width: 1920px) {}
+
+        #preloader {
+            background: #000 url(./loader.gif) no-repeat center center;
+            /* background-size: 35%; */
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
     </style>
 </head>
 
 <body>
+    <div id="preloader"></div>
     <div class="container">
         <div id="dd">
             <!-- CREDIT:- Forget to copy link :( -->
@@ -202,6 +201,14 @@
             }
         }
         updateDate();
+    </script>
+
+    <script>
+        var loader = document.getElementById("preloader");
+
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
     </script>
 </body>
 
